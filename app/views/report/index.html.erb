@@ -1,0 +1,37 @@
+<h1>Reports (Populating from MySql Database)</h1>
+
+
+<script>
+$(document).ready(function() {
+    $('#dataTableReports').DataTable();
+} );
+</script> 
+
+<table id="dataTableReports" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        
+        
+  <tbody>
+    <% @workers.each do |worker| %>
+      <tr>
+        <td><%= format_name(worker.name, worker.gender) %></td>
+        <td><%= worker.position %></td>
+        <td><%= worker.office %></td>
+        <td><%= worker.age %></td>
+        <td><%= number_to_currency(worker.price) %></td>
+       
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+  <%= link_to 'Home', root_path %>

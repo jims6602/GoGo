@@ -1,0 +1,50 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+
+
+<h1><%= format_title ( 'Article') %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aurthor Last Name</th>
+      <th>Aurthor First Name</th>
+      <th>Title</th>
+      <th>Rating</th>
+    
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.author_last_name %></td>
+        <td><%= article.author_first_name %></td>
+        <td><%= article.title %></td>
+        <td><%= article.rating %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Home', root_path %> |
+<%= link_to 'Demonstration Components', component_index_path %> |

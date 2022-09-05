@@ -1,0 +1,74 @@
+<style>
+#code { 
+  font-family: monospace;
+  padding: 10px;
+  background-color: lightblue;
+}
+</style>
+
+
+<h1><i>Components</i></h1>
+<br>
+
+<h5>Household Chores</h5>
+
+<%= form_tag(complete_tasks_path, method: :put)  do %> 
+
+  <% for task in @tasks %> 
+    <ul style="list-style-type: none;">
+      <li>
+        <%= check_box_tag 'task_id[]', task.id %>  
+        <%= task.title %> ( <%= task.description %> )
+      </li>
+    </ul>
+  <% end %>
+  
+   <%= submit_tag 'Submit Tasks' %>
+   
+<% end %>
+
+<hr>
+<br>
+
+<h5>Rating Authors</h5>
+
+
+<%= form_tag(complete_rating_path, method: :put)  do %> 
+
+ <div style="margin-left:60px;">
+ <% for article in @article %> 
+    <div style="margin-bottom:15px;">
+    <%= article.author_first_name %> <%= article.author_last_name %> <span style="margin-left:100px;"></span>
+    
+    <%  @ranking.each do |rank| %>
+        <%= radio_button_tag "#{article.id}_rating", rank %>  <%= rank %> &nbsp;
+    <% end %>
+    
+    <br>
+    </div>
+   
+  <% end %>
+  </div>
+  <br> 
+  
+  <%= submit_tag 'Submit Rating' %>
+
+<% end %>
+
+
+<hr>
+<br>
+
+<h5>Rendering Partial Page</h5>
+
+<div id="code">
+<p> &lt; %= render "component/message" % &gt</p>
+</div>
+<br>
+
+<%= render "component/message" %>
+
+<hr>
+<br>
+
+<%= link_to 'Home', root_path %>
